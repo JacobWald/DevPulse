@@ -102,12 +102,32 @@
 
   <div class="ci-charts-grid">
     <div class="ci-chart">
-      <h3 class="ci-chart-title">Weekly CI success vs failure</h3>
+      <div class="ci-chart-header">
+        <h3 class="ci-chart-title">Weekly CI success vs failure</h3>
+        <button
+          type="button"
+          class="chart-download-btn"
+          onclick="downloadChartAsPDF('ci-weekly-chart', 'Weekly CI success vs failure')"
+          title="Download chart as PDF"
+        >
+          ⬇
+        </button>
+      </div>
       <canvas id="ci-weekly-chart"></canvas>
     </div>
 
     <div class="ci-chart">
-      <h3 class="ci-chart-title">Weekly commits vs failed CI runs</h3>
+      <div class="ci-chart-header">
+        <h3 class="ci-chart-title">Weekly commits vs failed CI runs</h3>
+        <button
+          type="button"
+          class="chart-download-btn"
+          onclick="downloadChartAsPDF('ci-weekly-commits-chart', 'Weekly commits vs failed CI runs')"
+          title="Download chart as PDF"
+        >
+          ⬇
+        </button>
+      </div>
       <canvas id="ci-weekly-commits-chart"></canvas>
     </div>
   </div>
@@ -121,13 +141,23 @@
 
   <div class="ci-charts-grid">
     <div class="ci-chart">
-      <h3 class="ci-chart-title">Bug fixes vs refactors vs features</h3>
+      <div class="ci-chart-header">
+        <h3 class="ci-chart-title">Bug fixes vs refactors vs features</h3>
+        <button
+          type="button"
+          class="chart-download-btn"
+          onclick="downloadChartAsPDF('commit-type-pie', 'Commit type breakdown')"
+          title="Download chart as PDF"
+        >
+          ⬇
+        </button>
+      </div>
       <canvas id="commit-type-pie"></canvas>
     </div>
   </div>
 </section>
 
-<section class="ci-card"></section>
+<section class="ci-card">
   <h2 class="ci-card-title">Commit Time Distribution</h2>
   <p class="ci-card-subtitle">
     How commits are spread across the day, and who is committing at each time.
@@ -135,7 +165,18 @@
 
   <div class="ci-charts-grid">
     <div class="ci-chart">
-      <h3 class="ci-chart-title">Commits by time window</h3>
+      <div class="ci-chart-header">
+        <h3 class="ci-chart-title">Commits by time window</h3>
+        <button
+          type="button"
+          class="chart-download-btn"
+          onclick="downloadChartAsPDF('commit-hours-bar', 'Commits by time window')"
+          title="Download chart as PDF"
+        >
+          ⬇
+        </button>
+      </div>
+
       <canvas id="commit-hours-bar"></canvas>
 
       <div id="commit-hours-details" class="commit-hours-details">

@@ -1,6 +1,7 @@
 {% extends "analytics/base.html" %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'styles/dashboard.css' %}" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <link rel="stylesheet" href="{% static 'styles/variables.css' %}" />
 
 
@@ -54,6 +55,71 @@
 
 <script>
   const REPO_URL = "{{ repo.url|escapejs }}";
+
+  // ========= Generic chart → PDF download helper =========
+  // Usage example in any child template:
+  //   <button onclick="downloadChartAsPDF('ci-weekly-chart', 'Weekly CI success vs failure')">
+  //     ⬇
+  //   </button>
+  function downloadChartAsPDF(canvasId, title) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) {
+      console.error("downloadChartAsPDF: canvas not found:", canvasId);
+      return;
+    }
+
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+      console.error("downloadChartAsPDF: jsPDF is not loaded");
+      return;
+    }
+
+    const { jsPDF } = window.jspdf;
+
+    // Set orientation based on canvas dimensions
+    const isLandscape = canvas.width >= canvas.height;
+    const pdf = new jsPDF({
+      orientation: isLandscape ? "l" : "p",
+      unit: "pt",
+      format: "a4",
+    });
+
+    const imgData = canvas.toDataURL("image/png", 1.0);
+
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const margin = 40;
+
+    const availableWidth = pageWidth - margin * 2;
+    const availableHeight = pageHeight - margin * 2 - 20; // leave space for title
+
+    const aspect = canvas.width / canvas.height;
+    let renderWidth = availableWidth;
+    let renderHeight = renderWidth / aspect;
+
+    // Fit chart inside available height if needed
+    if (renderHeight > availableHeight) {
+      renderHeight = availableHeight;
+      renderWidth = renderHeight * aspect;
+    }
+
+    const x = (pageWidth - renderWidth) / 2;
+    let y = margin;
+
+    if (title) {
+      pdf.setFontSize(14);
+      pdf.text(String(title), pageWidth / 2, margin, { align: "center" });
+      y = margin + 20;
+    }
+
+    pdf.addImage(imgData, "PNG", x, y, renderWidth, renderHeight);
+
+    const safeTitle = (title || canvasId)
+      .toString()
+      .replace(/[^a-z0-9]+/gi, "_")
+      .toLowerCase();
+
+    pdf.save(`${safeTitle}.pdf`);
+  }
 
 let commitTimeChart = null;
 let commitTimeBucketDevCounts = [];
