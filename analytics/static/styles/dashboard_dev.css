@@ -222,7 +222,7 @@
   margin: 0.5rem 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   color: var(--color-secondary);
-  overflow: visible;
+  /*overflow: visible;*/
 }
 
 .chart-container {
@@ -250,7 +250,10 @@
   background: var(--color-secondary-alt);
   color: var(--color-primary);
   border: 1px solid #333;
-  display: table
+}
+
+.commit-table thead tr {
+  border-bottom: 1px solid #333; /* or any color you want */
 }
 
 .commit-table th, .commit-table td {
@@ -271,28 +274,16 @@
   background: var(--color-secondary-alt)
 }
 .commit-table thead {
-  position: sticky; /* Keep header visible while scrolling */
+  position: sticky;  
   top: 0;
   z-index: 1;
 }
 
 .scroll_it {
-  max-height: 50px;   /* adjust until it shows ~6 commits */
+  max-height: 300px;   /* adjust until it shows ~6 commits */
   overflow-y: scroll;
-  border: 1px solid red;
+  border: var(--color-secondary-alt);
   border-radius: 8px;
   display:block;
-  scrollbar-color: auto auto;
-}
-.commit-table-wrapper::-webkit-scrollbar {
-  width: 10px;
-}
-
-.commit-table-wrapper::-webkit-scrollbar-thumb {
-  background: #666;
-  border-radius: 10px;
-}
-
-.commit-table-wrapper::-webkit-scrollbar-track {
-  background: #222;
+  scrollbar-color: var(--color-primary) var(--color-primary-alt);
 }
