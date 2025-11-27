@@ -17,4 +17,6 @@ urlpatterns = [
     path("analysis/<uuid:analysis_id>/dashboard/", views.analysis_dashboard, name="analysis_dashboard"),
     path("analysis/<uuid:analysis_id>/dashboard/overall/", views.analysis_dashboard_overall, name="analysis_dashboard_overall"),
     path("analysis/<uuid:analysis_id>/dashboard/developers/", views.analysis_dashboard_developers, name="analysis_dashboard_developers"),
+    path( "analysis/<uuid:analysis_id>/delete/confirm/", views.ana_delete_confirm , name="ana_delete_confirm"),
+    path("analysis/<uuid:analysis_id>/delete/", views.analysis_delete, name="analysis_delete"),
 ]

@@ -24,6 +24,12 @@
         </div>
 
         <div class="analysis-card-right">
+          <form method="POST" action="{% url 'ana_delete_confirm' analysis_id=a.id %}">
+            {% csrf_token %}
+            <button type="submit" class="analysis-json-pill" onclick= "event.stopPropagation()">
+              Delete Analysis
+            </button>
+          </form>
           <a
             class="analysis-json-pill"
             href="{% url 'analysis_refresh' analysis_id=a.id %}"

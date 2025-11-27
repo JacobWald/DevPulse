@@ -20,6 +20,9 @@ load_dotenv(BASE_DIR / ".env", override=True)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "change-me-in-env")
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
+
 # local hosts (dev) — add your deploy hostnames later
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 

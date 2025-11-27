@@ -1,0 +1,28 @@
+{% extends "analytics/base.html" %}
+{% load static %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/my_analyses.css' %}">
+
+<div class="confirm-container">
+    <h1>Delete Analysis</h1>
+
+    <p>Are you sure you want to delete the analysis for:</p>
+
+    <div class="confirm-box">
+        <strong>{{ analysis.repository.name }}</strong><br>
+        <span>Mined: {{ analysis.mined_at }}</span>
+    </div>
+
+    <p>This action cannot be undone.</p>
+
+    <form method="POST" action="{% url 'analysis_delete' analysis_id=analysis.id %}">
+        {% csrf_token %}
+        <button class="delete-btn" type="submit">Yes, Delete Permanently</button>
+        <a class="cancel-btn" href="{% url 'my_analyses' %}">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}
