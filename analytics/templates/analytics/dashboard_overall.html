@@ -16,7 +16,6 @@
       <!-- Commits -->
       <div class="legend-tile">
         <div class="legend-icon">
-          <!-- TODO: replace src with your real icon file -->
           <img src="{% static 'icons/commits.svg' %}" alt="Commits icon" class="legend-icon-img">
         </div>
         <div class="legend-text">
@@ -164,6 +163,7 @@
   </p>
 
   <div class="ci-charts-grid">
+    <!-- Left: time-of-day buckets -->
     <div class="ci-chart">
       <div class="ci-chart-header">
         <h3 class="ci-chart-title">Commits by time window</h3>
@@ -199,6 +199,24 @@
           </tbody>
         </table>
       </div>
+    </div>
+
+    <!-- Right: overall commits per weekday -->
+    <div class="ci-chart">
+      <div class="ci-chart-header">
+        <h3 class="ci-chart-title">Commits per weekday (overall)</h3>
+        <button
+          type="button"
+          class="chart-download-btn"
+          onclick="downloadChartAsPDF('weekdayBarChartOverall', 'Commits per weekday (overall)')"
+          title="Download chart as PDF"
+        >
+          ⬇
+        </button>
+      </div>
+
+      <!-- overall Mon–Sun bar chart -->
+      <canvas id="weekdayBarChartOverall"></canvas>
     </div>
   </div>
 </section>
