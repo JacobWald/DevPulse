@@ -109,7 +109,6 @@
 
         <div class="dev-stat-tile">
           <div class="dev-stat-icon">
-            <!-- TODO: use a specific icon if you add one -->
             <img
               src="{% static 'icons/commits.svg' %}"
               alt="Last commit icon"
@@ -163,10 +162,13 @@
       </div>
     </div>
     <div class="small-activity-card">
-        <!--graph -->
-        <div class="ci-bar-chart-container">
-          <canvas id="ciBarChart" width="400" height="200"></canvas>
-        </div>
+      <!-- CI graph -->
+      <div class="ci-bar-chart-container">
+        <canvas id="ciBarChart" width="400" height="200"></canvas>
+      </div>
+      <div class="weekday-bar-chart-container">
+        <canvas id="weekdayBarChart" width="400" height="200"></canvas>
+      </div>
     </div>
     <div class="small-activity-card">
     <!--expanldable table listing-->
@@ -186,6 +188,5 @@
         <tbody id="commitTableBody"></tbody>
       </table>
     </div>
-    </div> 
   </div>
 </section>
