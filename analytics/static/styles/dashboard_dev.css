@@ -273,6 +273,12 @@
 .commit-table thead, tbody {
   background: var(--color-secondary-alt)
 }
+.weekday-bar-chart-container {
+  background: var(--color-secondary);
+  border-radius: 12px;
+  padding: 0.75rem 1rem 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
 .commit-table thead {
   position: sticky;  
   top: 0;
