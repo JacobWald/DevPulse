@@ -34,7 +34,7 @@ cd RepoPerformanceEval
 
 After these commands, you should be inside the RepoPerformanceEval folder.
 
-## 3) Set Up Python for This Project
+## 3) Install Dependencies for this project
 
 We’ll create a virtual environment so the project’s packages don’t interfere with other projects on your computer.
 
@@ -90,7 +90,12 @@ With (venv) active, install all the required Python libraries
 pip install -r requirements.txt
 ```
 
-## 4) Run the server
+## 4) Set up environment variables
+
+While inside the RepoPerformanceEval directory, drag and drop the .env file included in the Project Phase 3 submission.
+It should be located at RepoPerformanceEval/.env
+
+## 5) Run the server
 
 Simply run the following command:
 
@@ -98,50 +103,4 @@ Simply run the following command:
 python manage.py runserver
 ```
 
-## Setting up the ENV
-In the main directory, creat a file called .env
-Within that file, add the follow structure:
-
-```bash
-# ──────────────
-# 🧑‍💻 GITHUB API CONFIG
-# ──────────────
-GITHUB_TOKEN=your_token
-MINER_DAYS=45                   
-CI_HARD_PAGE_CAP=100   
-```
-
-You will need to generate a personal access token on GitHub with 
-the following permissions: public_repo and read:org. After
-generating this token, replace your_token in the .env with it
-
-If you wish to run the repository miner script seperately to generate
-the json of repo analysis data, run the command:
-
-## Setting up Supabase
-
-### Installation
-    - pip install -r requirements.txt
-    - pip install psycopg2-binary python-dotenv supabase
-
-### Update the .env file
-  - Add the required config and tokens in .env file.
-
-### Run the server
-  - python manage.py migrate
-  - python manage.py runserver
-
-## Table Info
-
-### Repositories table
-
-  - This table is your “catalog of repos.” Each repo has an owner and a UUID. That UUID is the prefix we’ll use in Storage paths.
-
-### 
-  - This will log every JSON upload tied to a repo. one repo can have many json with it, this table provides info about repo and its storage json path.
-
-```bash
-python analytics/services/miner.py https://github.com/tensorflow/tensorflow
-```
-
-Feel free to replace the tensorflow github url with any other public repository.
+While on the site, provide a public facing GitHub URL as input, and then analyze the repository!
