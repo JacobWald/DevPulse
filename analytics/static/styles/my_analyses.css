@@ -71,6 +71,7 @@
   background-color: var(--color-secondary);
   color: var(--color-primary);
   text-decoration: none !important;
+  margin-left: 5px;
 }
 
 .confirm-container {
