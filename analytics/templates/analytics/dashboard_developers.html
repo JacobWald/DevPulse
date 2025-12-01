@@ -109,7 +109,6 @@
 
         <div class="dev-stat-tile">
           <div class="dev-stat-icon">
-            <!-- TODO: use a specific icon if you add one -->
             <img
               src="{% static 'icons/commits.svg' %}"
               alt="Last commit icon"
@@ -127,7 +126,6 @@
           </div>
         </div>
 
-        <!-- NEW TILE: Activity window (active days) -->
         <div class="dev-stat-tile">
           <div class="dev-stat-icon">
             <img
@@ -145,7 +143,6 @@
           </div>
         </div>
 
-        <!-- NEW TILE: Weekend activity -->
         <div class="dev-stat-tile">
           <div class="dev-stat-icon">
             <img
@@ -169,8 +166,6 @@
       <div class="ci-bar-chart-container">
         <canvas id="ciBarChart" width="400" height="200"></canvas>
       </div>
-
-      <!-- NEW: commits per weekday (Mon–Sun) graph -->   174
       <div class="weekday-bar-chart-container">
         <canvas id="weekdayBarChart" width="400" height="200"></canvas>
       </div>
@@ -192,5 +187,5 @@
           <tbody id="commitTableBody"></tbody>
         </table>
     </div>
-    </div>
+  </div>
 </section>

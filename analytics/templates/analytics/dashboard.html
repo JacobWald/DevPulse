@@ -501,7 +501,7 @@
         const colorFailure = "#e76f51";
 
         const barColors = COMMIT_TIME_BUCKETS.map((b) =>
-          b.id === "night" ? colorFailure : colorPrimaryAlt
+          b.id === "night" ? colorFailure : colorPrimary
         );
 
         const ctx = canvas.getContext("2d");
@@ -799,7 +799,7 @@ function initOverallWeekdayChart() {
 
       const styles = getComputedStyle(document.documentElement);
       const barColorWeekday =
-        styles.getPropertyValue("--color-primary-alt").trim() || "#98A1BC";
+        styles.getPropertyValue("--color-primary").trim() || "#98A1BC";
       const barColorWeekend = "#e76f51"; // same as night color
       const axisColor =
         styles.getPropertyValue("--color-primary").trim() || "#555879";
@@ -1214,10 +1214,10 @@ function renderWeekdayBarChart(dev) {
 
   const styles = getComputedStyle(document.documentElement);
   const colorPrimaryAlt =
-    styles.getPropertyValue("--color-primary-alt").trim() || "#98A1BC";
+    styles.getPropertyValue("--color-primary").trim() || "#98A1BC";
   const colorFailure = "#e76f51"; // same accent as 8pm–8am bar
   const axisColor =
-    styles.getPropertyValue("--color-secondary").trim() || "#DED3C4";
+    styles.getPropertyValue("--color-primary").trim() || "#DED3C4";
 
   // Weekdays in blue-ish, Sat/Sun in accent
   const barColors = labels.map((label) =>
