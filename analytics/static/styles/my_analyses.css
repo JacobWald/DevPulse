@@ -73,13 +73,6 @@
   text-decoration: none !important;
 }
 
-.confirm-container {
-  background: var(--color-secondary-alt);
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 600px;
-  margin: 2rem auto;
-}
 
 .confirm-box {
   background: var(--color-primary);
@@ -89,14 +82,35 @@
   margin: 1rem 0;
 }
 
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal {
+    background: var(--color-secondary);
+    padding: 2rem;
+    width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
 .delete-btn {
-  background: #b81c1c;
+  background: #c62828;
   color: #fff;
+  border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .cancel-btn {
   margin-left: 1rem;
-  text-decoration: underline;
 }

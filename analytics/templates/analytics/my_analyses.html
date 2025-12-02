@@ -24,12 +24,13 @@
         </div>
 
         <div class="analysis-card-right">
-          <form method="POST" action="{% url 'ana_delete_confirm' analysis_id=a.id %}">
-            {% csrf_token %}
-            <button type="submit" class="analysis-json-pill" onclick= "event.stopPropagation()">
-              Delete Analysis
-            </button>
-          </form>
+          <!-- Delete button that opens modal "delete-btn-small"-->
+          <button
+            class="analysis-json-pill"
+            onclick="event.stopPropagation(); openDeleteModal('{{ a.id }}', '{{ a.repository.name }}', '{{ a.mined_at }}');"
+          >
+            Delete
+          </button>
           <a
             class="analysis-json-pill"
             href="{% url 'analysis_refresh' analysis_id=a.id %}"
@@ -44,5 +45,43 @@
 {% else %}
   <p>No analyses yet. Run one from <a href="{% url 'home' %}">Home</a>.</p>
 {% endif %}
+
+<!-- 🔵 SINGLE MODAL — outside the loop -->
+<div id="deleteModal" class="modal-overlay">
+  <div class="modal">
+      <h2>Delete Analysis</h2>
+
+      <p>Are you sure you want to delete the analysis for:</p>
+
+      <div class="confirm-box">
+          <strong id="repoName"></strong><br>
+          <span id="minedAt"></span>
+      </div>
+
+      <p>This action cannot be undone.</p>
+
+      <form id="deleteForm" method="POST">
+          {% csrf_token %}
+          <button class="delete-btn" type="submit">Yes, Delete Permanently</button>
+          <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+      </form>
+  </div>
+</div>
+
+<script>
+function openDeleteModal(id, repoName, minedAt) {
+    document.getElementById("repoName").innerText = repoName;
+    document.getElementById("minedAt").innerText = "Mined: " + minedAt;
+
+    document.getElementById("deleteForm").action =
+        `/analysis/${id}/delete/`;
+
+    document.getElementById("deleteModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("deleteModal").style.display = "none";
+}
+</script>
 
 {% endblock %}

@@ -2,10 +2,10 @@
 .auth-wrap {
     min-height: 100vh;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding: 1rem;
-    background: var(--color--secondary, #f0f0f0); /* fallback if variable missing */
+    background: var(--color-secondary, #f0f0f0); /* fallback if variable missing */
 }
 /* Make the card smaller and centered */
 .auth-card {

@@ -493,22 +493,4 @@ def analysis_delete(request, analysis_id):
     # GET request - show confirmation page
     return render(request, 'analytics/ana_confirm_delete.html', {'analysis': analysis})
 
-@require_supabase_login
-def ana_delete_confirm(request, analysis_id):
-    sb_user = request.session.get('sb_user')
 
-    if not sb_user:
-        messages.error(request, "Session expired. Please log in again.")
-        return redirect('login')
-
-    user_id = sb_user.get('id')
-
-    analysis = get_object_or_404(
-        Analysis,
-        id=analysis_id,
-        user_id=user_id
-    )
-
-    return render(request, "analytics/ana_delete_confirm.html", {
-        "analysis": analysis
-    })
