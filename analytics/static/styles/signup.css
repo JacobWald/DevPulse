@@ -5,11 +5,11 @@
     align-items: flex-start;
     justify-content: center;
     padding: 1rem;
-    background: var(--color--secondary, #f0f0f0); /* fallback if variable missing */
+    background: var(--color-primary); /* fallback if variable missing */
 }
 /* Make the card smaller and centered */
 .auth-card {
-  background: #f8f8f8;
+  background: var(--color-secondary);
   align-items: flex-start;
   padding: 1.5rem 2rem;
   border-radius: 0.75rem;

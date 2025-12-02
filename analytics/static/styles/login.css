@@ -1,59 +1,67 @@
 @import url('variables.css');
+
+/* Make this behave like .home-container */
 .auth-wrap {
-    min-height: 100vh;
     display: flex;
-    align-items: flex-start;
     justify-content: center;
-    padding: 1rem;
-    background: var(--color--secondary, #f0f0f0); /* fallback if variable missing */
+    margin-top: 4rem;        /* same idea as home-container */
+    padding-bottom: 6rem;    /* same idea as home-container */
+    background: var(--color-secondary-alt);
 }
-/* Make the card smaller and centered */
+
+/* Card (similar idea to home-card, but with your colors) */
 .auth-card {
-  background: #f8f8f8;
-  align-items: flex-start;
-  padding: 1.5rem 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  max-width: 360px;           /* Smaller width */
-  width: 100%;
-  text-align: center;
-  margin: auto;
+    background: var(--color-primary);
+    padding: 1.5rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    margin: 0;               /* not auto, same as home-card */
 }
-  .auth-card h1 {
-    margin-bottom: 1rem ;
+
+.auth-card h1 {
+    margin-bottom: 1rem;
     font-size: 1.75rem;
-    color: var(--color-primary);
-  }
-  
-  /* Fields */
-  .field { text-align: left;
-               margin-bottom: 1rem; }
-  .field label {
+    color: var(--color-secondary-alt);
+}
+
+/* Fields */
+.field {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.field label {
     display: block;
     margin-bottom: .35rem;
     font-weight: 600;
-    color: var(--color-primary);
-  }
-  .field input[type="text"],
-  .field input[type="email"],
-  .field input[type="password"] {
-    width: 90%;
-    max-width: 320px;           /* Cap the max width */
+    color: var(--color-secondary-alt);
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"] {
+    width: 100%;
+    max-width: 100%;
     padding: .6rem .7rem;
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--color-primary);
     border-radius: 0.5rem;
-    background-color: #fff;
+    background-color: var(--color-secondary-alt);
     color: var(--color-primary);
-    margin: 0 auto;             /* Center input fields */
-  }
-    .field input:focus {
-        border-color: var(--color--secondary);
-    }
+    margin: 0;
+}
+
+.field input:focus {
+    border-color: var(--color-primary-alt);
+    outline: none;
+}
 
 /* Button */
 .btn {
-    background-color: var(--color-primary);
-    color:var(--color-secondary);
+    background-color: var(--color-secondary-alt);
+    color: var(--color-primary);
     border: none;
     padding: 0.7rem 1.5rem;
     border-radius: 0.5rem;
@@ -64,22 +72,22 @@
 }
 
 .btn:hover {
-  background-color: var(--color-primary-alt);   /* Slightly darker when hovered */
+    background-color: var(--color-primary-alt);
 }
+
 /* Meta text (signup link) */
 .meta {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--color-secondary);
 }
 
-    .meta a {
-        color: var(--color--secondary);
-        font-weight: 600;
-        text-decoration: none;
-    }
+.meta a {
+    color: var(--color-secondary-alt);
+    font-weight: 600;
+    text-decoration: none;
+}
 
-        .meta a:hover {
-            text-decoration: underline;
-        }
-  
+.meta a:hover {
+    text-decoration: underline;
+}

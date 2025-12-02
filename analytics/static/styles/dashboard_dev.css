@@ -222,6 +222,7 @@
   margin: 0.5rem 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   color: var(--color-secondary);
+  /*overflow: visible;*/
 }
 
 .chart-container {
@@ -245,10 +246,14 @@
 .commit-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 0;
   background: var(--color-secondary-alt);
   color: var(--color-primary);
   border: 1px solid #333;
+}
+
+.commit-table thead tr {
+  border-bottom: 1px solid #333; /* or any color you want */
 }
 
 .commit-table th, .commit-table td {
@@ -267,6 +272,26 @@
 
 .commit-table thead, tbody {
   background: var(--color-secondary-alt)
+}
+.weekday-bar-chart-container {
+  background: var(--color-secondary);
+  border-radius: 12px;
+  padding: 0.75rem 1rem 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.commit-table thead {
+  position: sticky;  
+  top: 0;
+  z-index: 1;
+}
+
+.scroll_it {
+  max-height: 300px;   /* adjust until it shows ~6 commits */
+  overflow-y: scroll;
+  border: var(--color-secondary-alt);
+  border-radius: 8px;
+  display:block;
+  scrollbar-color: var(--color-primary) var(--color-primary-alt);
 }
 
 .weekday-bar-chart-container {

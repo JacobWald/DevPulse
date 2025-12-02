@@ -17,6 +17,8 @@ from django.utils import timezone
 from .models import Repository, Analysis
 from core.supa import get_supabase
 from subprocess import PIPE, STDOUT
+from django.conf import settings
+from supabase import create_client
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -420,4 +422,75 @@ def analysis_dashboard_developers(request, analysis_id: int):
         "repo": repo,
     }
     return render(request, "analytics/dashboard_developers.html", context)
+
+@require_supabase_login
+def analysis_delete(request, analysis_id):
+    # Get the analysis, ensuring it belongs to the current user
+    sb_user = request.session.get('sb_user')
+    
+    if not sb_user:
+        messages.error(request, 'Session expired. Please log in again.')
+        return redirect('login')
+    
+    # Extract the user ID from the sb_user dictionary
+    user_id = sb_user.get('id')
+    
+    analysis = get_object_or_404(Analysis, id=analysis_id, user_id=user_id)
+    # Get the repository BEFORE the POST check (so it's available for both GET and POST)
+    repository = analysis.repository
+    repository_id = repository.id
+    repo_name = repository.name # Replace slashes if needed
+    
+    if request.method == 'POST':
+        try:
+            #repository_id = analysis.repository_id
+            # Initialize Supabase client
+            supabase = create_client(settings.SUPABASE_URL, settings.SUPABASE_SERVICE_KEY)
+            
+            # 1. Delete files from Supabase Storage
+            try:
+                # Construct the file path - adjust based on your actual naming convention
+                # Option 1: If files are named by repository name
+                #repo_name = repository.name # Replace slashes if needed
+                folder_prefix = f"{user_id}/{repo_name}/"
+                print("Listing from prefix:", folder_prefix)
+
+                # 1. List everything inside the folder
+                files = supabase.storage.from_("commit-data").list(folder_prefix, {"limit": 1000})
+
+                # 2. Build a list of full paths
+                paths_to_delete = [folder_prefix + f["name"] for f in files]
+
+                # 3. Delete all files
+                if paths_to_delete:
+                    supabase.storage.from_("commit-data").remove(paths_to_delete)
+                    print("Deleted files:", paths_to_delete)
+                else:
+                    print("NO files found to delete!")
+                
+            except Exception as storage_error:
+                print(f"Storage deletion error: {storage_error}")
+                # Continue even if storage deletion fails
+            
+            # 1. Delete the Analysis record
+            analysis.delete()
+            
+            # 2. Delete the Repository if no other analyses exist
+            try:
+                repository = Repository.objects.get(id=repository_id)
+                if not Analysis.objects.filter(repository_id=repository_id).exists():
+                    repository.delete()
+            except Repository.DoesNotExist:
+                pass
+            
+            messages.success(request, 'Analysis deleted successfully!')
+            return redirect('my_analyses')
+            
+        except Exception as e:
+            messages.error(request, f'Error deleting analysis: {str(e)}')
+            return redirect('my_analyses')
+    
+    # GET request - show confirmation page
+    return render(request, 'analytics/ana_confirm_delete.html', {'analysis': analysis})
+
 
