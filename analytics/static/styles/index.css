@@ -40,7 +40,7 @@ body {
     margin-left: 16px; 
     margin-right: 16px;     
     color: var(--color-secondary-alt);
-    font: inherit;          /* same font/size as links */
+    font: inherit;        
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
