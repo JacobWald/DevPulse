@@ -1,15 +1,14 @@
 @import url('variables.css');
 .auth-wrap {
-    min-height: 100vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding: 1rem;
-    background: var(--color-primary); /* fallback if variable missing */
+    background: var(--color-secondary-alt);
 }
 /* Make the card smaller and centered */
 .auth-card {
-  background: var(--color-secondary);
+  background: var(--color-primary);
   align-items: flex-start;
   padding: 1.5rem 2rem;
   border-radius: 0.75rem;
@@ -22,7 +21,7 @@
   .auth-card h1 {
     margin-bottom: 1rem ;
     font-size: 1.75rem;
-    color: var(--color-primary);
+    color: var(--color-secondary-alt);
   }
   
   /* Fields */
@@ -32,7 +31,7 @@
     display: block;
     margin-bottom: .35rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--color-secondary-alt);
   }
   .field input[type="text"],
   .field input[type="email"],
@@ -71,7 +70,7 @@
 .meta {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--color-secondary-alt);
 }
 
     .meta a {
