@@ -104,3 +104,12 @@ python manage.py runserver
 ```
 
 While on the site, provide a public facing GitHub URL as input, and then analyze the repository!
+
+## 6) Repository Reccommendations
+
+Of course, you are free to analyze any public repository you would like. However, after a lot of testing,
+here is a list of repositories that we feel do a good job of reflecting our projects work.
+
+- https://github.com/apache/spark
+- https://github.com/supabase/supabase
+- https://github.com/fastapi/fastapi
