@@ -6,19 +6,29 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/main.css' %}">
 
-<section class="wrapper">
-  <div class="left-panel">
-    <img src="{% static 'assets/images/logo.png' %}" alt="Analytics illustration">
+<div class="home-container">
+
+  <div class="index-card">
+
+      <div class="index-illustration">
+        <img src="{% static 'assets/images/logo.png' %}" alt="Analytics illustration">
+      </div>
+
+      <div class="index-copy">
+        <h1>Welcome to the Performance Analytics Dashboard</h1>
+        <p>
+          Visualize commits, uncover patterns, and monitor progress over time.
+          The dashboard makes it easy for managers to review performance and make
+          data-driven decisions.
+        </p>
+
+        <a href="{% url 'login' %}" class="btn btn-primary" role="button">
+          Log in
+        </a>
+      </div>
+      
   </div>
 
-  <div class="right-panel">
-    <h1>Welcome to the Performance Analytics Dashboard</h1>
-    <p>
-      Visualize commits, uncover patterns, and monitor progress over time.
-      The dashboard makes it easy for managers to review performance and make data-driven decisions.
-    </p>
+</div>
 
-    <a href="{% url 'login' %}" class="btn btn-primary" role="button">Log in</a>
-  </div>
-</section>
 {% endblock %}

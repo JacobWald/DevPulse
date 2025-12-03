@@ -1,15 +1,13 @@
 @import url('variables.css');
 
-/* Make this behave like .home-container */
 .auth-wrap {
     display: flex;
     justify-content: center;
-    margin-top: 4rem;        /* same idea as home-container */
-    padding-bottom: 6rem;    /* same idea as home-container */
+    margin-top: 4rem;        
+    padding-bottom: 6rem;    
     background: var(--color-secondary-alt);
 }
 
-/* Card (similar idea to home-card, but with your colors) */
 .auth-card {
     background: var(--color-primary);
     padding: 1.5rem 2rem;
@@ -18,7 +16,7 @@
     max-width: 360px;
     width: 100%;
     text-align: center;
-    margin: 0;               /* not auto, same as home-card */
+    margin: 0;              
 }
 
 .auth-card h1 {
