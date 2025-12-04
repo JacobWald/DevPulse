@@ -1,4 +1,4 @@
-# DevAnalytics — Quick Start (Steps 1–3)
+# DevPulse — Quick Start (Steps 1–3)
 
 This guide gets you from zero to a working local setup. It’s written for beginners and covers:
 1) Installing tools  
