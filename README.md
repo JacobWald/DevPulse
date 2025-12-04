@@ -28,11 +28,11 @@ Open a terminal (PowerShell on Windows; Terminal on macOS/Linux) and run:
 
 ```bash
 # Choose a folder where you keep code, then:
-git clone https://github.com/JacobWald/RepoPerformanceEval 
-cd RepoPerformanceEval
+git clone https://github.com/JacobWald/DevPulse 
+cd DevPulse
 ```
 
-After these commands, you should be inside the RepoPerformanceEval folder.
+After these commands, you should be inside the DevPulse folder.
 
 ## 3) Install Dependencies for this project
 
@@ -92,8 +92,8 @@ pip install -r requirements.txt
 
 ## 4) Set up environment variables
 
-While inside the RepoPerformanceEval directory, drag and drop the .env file included in the Project Phase 3 submission.
-It should be located at RepoPerformanceEval/.env
+While inside the DevPulse directory, drag and drop the .env file included in the Project Phase 3 submission.
+It should be located at DevPulse/.env
 
 ## 5) Run the server
 
